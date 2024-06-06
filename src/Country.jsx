@@ -20,7 +20,9 @@ export default function Country(){
             setDetail(data);
 
         }catch(e){
-            console.log(e)
+
+            setDetail([1,2,3,4])
+            console.log(e);
         }
     }
     useEffect(()=>{
