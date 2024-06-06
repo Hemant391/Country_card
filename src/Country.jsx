@@ -16,7 +16,7 @@ export default function Country(){
         try{
             let response=await fetch(url);
             let data= await response.json();
-            console.log(data)
+           
             setDetail(data);
 
         }catch(e){
@@ -30,7 +30,7 @@ export default function Country(){
     return (
         <div style={{display:'flex',flexWrap:'wrap',alignItems:'center',height:'100vh'}}>
 
-            {detail.map((data)=>(<Carddetail  name={data.name.common} image={data.flags.png} alt={data.flags.alt} />))}
+            {detail.map((data)=>(<Carddetail key={data.name.common}  name={data.name.common} image={data.flags.png} alt={data.flags.alt} />))}
         </div>
     )
 }
