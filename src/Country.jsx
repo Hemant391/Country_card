@@ -1,29 +1,36 @@
 import React, { useState,useEffect } from 'react'
     function Carddetail({name,image,alt}){
         return(<div className='card' style={{width:'200px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center', width:"190px",border:'1px solid black',
-        padding:'3px',margin:'10px 5px',height:'150px'
+        padding:'10px',margin:'10px',height:'200px',borderRadius:'8px',
     }}>
-        <img style={{height:'80%'}} src={image} alt={alt} />
-        <h2 style={{height:'20%'}}>{name}</h2>
+        <img style={{width:'100%'}} src={image} alt={alt} />
+        <h4 >{name}</h4>
     </div>)
     }
 
 export default function Country(){
-    let url=''
-    let arrdata=[1,2,3,4,5,6,7,8,9];
-    const [cont_data,setCont_data]=useState([]);
+    let url='https://restcountries.com/v3.1/all'
+
+    const [detail,setDetail]=useState([]);
     const fetchdata=async ()=>{
         try{
-            let response
+            let response=await fetch(url);
+            let data= await response.json();
+            console.log(data)
+            setDetail(data);
+
         }catch(e){
             console.log(e)
         }
     }
+    useEffect(()=>{
+        fetchdata();
+    },[])
     
     return (
-        <div style={{display:'flex',flexWrap:'wrap',alignItems:'center',height:'11vh'}}>
+        <div style={{display:'flex',flexWrap:'wrap',alignItems:'center',height:'100vh'}}>
 
-            {arrdata.map((value)=>(<Carddetail key={value} name={cont_data} image={cont_data} alt={cont_data} />))}
+            {detail.map((data)=>(<Carddetail  name={data.name.common} image={data.flags.png} alt={data.flags.alt} />))}
         </div>
     )
 }
