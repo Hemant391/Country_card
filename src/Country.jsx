@@ -4,7 +4,7 @@ import React, { useState,useEffect } from 'react'
         padding:'10px',margin:'10px',height:'200px',borderRadius:'8px',
     }}>
         <img style={{width:'100%'}} src={image} alt={alt} />
-        <h2 className='countryCard'>{name}</h2>
+        <h2 >{name}</h2>
     </div>)
     }
 
@@ -19,12 +19,11 @@ export default function Country({Countryname}){
         try{
             let response=await fetch(url);
             let data= await response.json();
-            console.log(data)
             let filterdata=[]
             if(Countryname!=''){
 
           filterdata= data.filter((e)=>{
-                   return( e.name.common.toLowerCase().includes(Countryname.toLowerCase()))
+                   return( e.name.common.toLowerCase().includes(Countryname))
                 })
                 setDetail(filterdata);
             }else{
