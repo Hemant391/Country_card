@@ -24,7 +24,7 @@ export default function Country({Countryname}){
             if(Countryname!=''){
 
           filterdata= data.filter((e)=>{
-                   return( e.name.common.includes(Countryname))
+                   return( e.name.common.toLowerCase().includes(Countryname.toLowerCase()))
                 })
                 setDetail(filterdata);
             }else{
