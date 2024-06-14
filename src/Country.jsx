@@ -4,7 +4,7 @@ import React, { useState,useEffect } from 'react'
         padding:'10px',margin:'10px',height:'200px',borderRadius:'8px',
     }}>
         <img style={{width:'100%'}} src={image} alt={alt} />
-        <div >{name}</div>
+        <div className='countryCard'>{name}</div>
     </div>)
     }
 
